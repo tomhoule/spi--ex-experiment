@@ -1,0 +1,32 @@
+<h2>Listing editions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Editor</th>
+      <th>Language code</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for edition <- @editions do %>
+    <tr>
+      <td><%= edition.title %></td>
+      <td><%= edition.year %></td>
+      <td><%= edition.editor %></td>
+      <td><%= edition.language_code %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: edition_path(@conn, :show, edition), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: edition_path(@conn, :edit, edition), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: edition_path(@conn, :delete, edition), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New edition", to: edition_path(@conn, :new) %>

@@ -1,0 +1,40 @@
+<h2>Show edition</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @edition.title %>
+  </li>
+
+  <li>
+    <strong>Year:</strong>
+    <%= @edition.year %>
+  </li>
+
+  <li>
+    <strong>Editor:</strong>
+    <%= @edition.editor %>
+  </li>
+
+  <li>
+    <strong>Language code:</strong>
+    <%= @edition.language_code %>
+  </li>
+
+</ul>
+
+<div>
+  <%= link "Create fragment", to: edition_fragment_path(@conn, :new, @edition) %>
+</div>
+
+<ul>
+<%= for fragment <- @fragments do %>
+  <li>
+    <%= inspect(fragment) %>
+  </li>
+<% end %>
+</ul>
+
+<%= link "Edit", to: edition_path(@conn, :edit, @edition) %>
+<%= link "Back", to: edition_path(@conn, :index) %>
